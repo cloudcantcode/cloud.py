@@ -5,44 +5,23 @@ import datetime
 import requests
 from discord.ext import commands, tasks
 from itertools import cycle
+import json
+
 
 class fun(commands.Cog):
+    with open('c_cfg.json') as f:
+        data = json.load(f)
+
     def __init__(self, bot):
         self.bot = bot
 
     # Array for 8ball
     @commands.command(aliases=['8ball'])
     async def _8ball(self, ctx, *, question):
-        responses = ['It is certain.',
-                    'It is decidedly so.',
-                    'Without a doubt.',
-                    'Yes, definitely',
-                    'You may rely on it.',
-                    'As I see it, yes.',
-                    'Most likely.',
-                    'Outlook good.',
-                    'Yes',
-                    'Signs point to yes.',
-                    'Reply hazy, try again.',
-                    'Ask again later.',
-                    'Better not tell you now.',
-                    'Cannot predict now.',
-                    'Concentrate and ask again.',
-                    "Don't count on it",
-                    'My reply is no.',
-                    'My sources say no.',
-                    'Outlook not so good.',
-                    'Very doubtful.',
-                    'No.',
-                    'Shut the fuck up newfag',
-                    'How about fuck off.',
-                    'No faNN.',
-                    'Uh oh, retard alert.',
-                    'Config issue. All I see is an amazing cheat - Aimware user 2019',
-                    'Shut up 3rd world nigger - Arpac',
-                    "Bro I stopped snorting coke from your moms pussy 6 months later I did it again :pensive: - Arpac"] # Don't mind these lmao
+        responses = self.data["8ball"]
 
-        embed = discord.Embed(colour=0x95efcc, description=f"Question: {question} \n\nAnswer: {random.choice(responses)}")
+        embed = discord.Embed(
+            colour=0x95efcc, description=f"Question: {question} \n\nAnswer: {random.choice(responses)}")
         embed.set_author(name="8Ball")
         embed.set_footer(text="birb.cc")
         embed.timestamp = datetime.datetime.utcnow()
@@ -52,7 +31,8 @@ class fun(commands.Cog):
     @_8ball.error
     async def _8ball_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(colour=0x95efcc, description="Please ask a question. \n\nUsage: ,8ball [question]")
+            embed = discord.Embed(
+                colour=0x95efcc, description="Please ask a question. \n\nUsage: ,8ball [question]")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
@@ -60,32 +40,11 @@ class fun(commands.Cog):
 
     # Array for dick sizes
     @commands.command()
-    async def peepeesize(self, ctx, member : discord.Member):
-        dickSizes = ['8D',
-                    '8=D',
-                    '8==D',
-                    '8===D',
-                    '8====D',
-                    '8=====D',
-                    '8======D',
-                    '8=======D',
-                    '8========D',
-                    '8=========D',
-                    '8==========D',
-                    '8===========D',
-                    '8============D',
-                    '8=============D',
-                    '8==============D',
-                    '8===============D',
-                    '8================D',
-                    '8=================D',
-                    '8==================D',
-                    '8===================D',
-                    '8====================D',
-                    '8=====================D',
-                    '8======================D']
+    async def peepeesize(self, ctx, member: discord.Member):
+        dickSizes = self.data["dickSizes"]
 
-        embed = discord.Embed(colour=0x95efcc, description=f"Your peepee size is: {random.choice(dickSizes)} , {member.mention}")
+        embed = discord.Embed(
+            colour=0x95efcc, description=f"Your peepee size is: {random.choice(dickSizes)} , {member.mention}")
         embed.set_author(name="How big is peepee?")
         embed.set_footer(text="birb.cc")
         embed.timestamp = datetime.datetime.utcnow()
@@ -96,7 +55,8 @@ class fun(commands.Cog):
     async def peepeesize_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
 
-            embed = discord.Embed(colour=0x95efcc, description="Please specify a user to measure. \n\nUsage: ,peepeesize @user")
+            embed = discord.Embed(
+                colour=0x95efcc, description="Please specify a user to measure. \n\nUsage: ,peepeesize @user")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
@@ -104,21 +64,10 @@ class fun(commands.Cog):
 
     # Array for gay measure
     @commands.command()
-    async def howgay(self, ctx, member : discord.Member):
-        gayness = ['0%',
-                    '10%',
-                    '20%',
-                    '30%',
-                    '40%',
-                    '50%',
-                    '60%',
-                    '70%',
-                    '80%',
-                    '90%',
-                    '100%',
-                    'hella fucking']
-
-        embed = discord.Embed(colour=0x95efcc, description=f"{member.mention} is {random.choice(gayness)} gay.")
+    async def howgay(self, ctx, member: discord.Member):
+        gayness = self.data["gayness"]
+        embed = discord.Embed(
+            colour=0x95efcc, description=f"{member.mention} is {random.choice(gayness)} gay.")
         embed.set_author(name="How gay are you?")
         embed.set_footer(text="birb.cc")
         embed.timestamp = datetime.datetime.utcnow()
@@ -128,7 +77,8 @@ class fun(commands.Cog):
     @howgay.error
     async def howgay_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(colour=0x95efcc, description="Please specify a user.\n\nUsage: ,howgay @user")
+            embed = discord.Embed(
+                colour=0x95efcc, description="Please specify a user.\n\nUsage: ,howgay @user")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
@@ -136,15 +86,11 @@ class fun(commands.Cog):
 
     # Array for cringe measure
     @commands.command()
-    async def howcringe(self, ctx, member : discord.Member):
-        cringeness = ['not cringe.',
-                    'a tiny bit cringe'
-                    'sorta cringe.',
-                    'cringe.',
-                    'hella cringe.',
-                    'please shut the fuck up levels of cringe.']
+    async def howcringe(self, ctx, member: discord.Member):
+        cringeness = self.data["cringeness"]
 
-        embed = discord.Embed(colour=0x95efcc, description=f"{member.mention} is {random.choice(cringeness)}")
+        embed = discord.Embed(
+            colour=0x95efcc, description=f"{member.mention} is {random.choice(cringeness)}")
         embed.set_author(name="How cringe are you?")
         embed.set_footer(text="birb.cc")
         embed.timestamp = datetime.datetime.utcnow()
@@ -155,13 +101,15 @@ class fun(commands.Cog):
     async def howcringe_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
 
-            embed = discord.Embed(colour=0x95efcc, description="Please specify a user to measure their cringeness. \n\nUsage: ,howcringe @user")
+            embed = discord.Embed(
+                colour=0x95efcc, description="Please specify a user to measure their cringeness. \n\nUsage: ,howcringe @user")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
             await ctx.send(embed=embed)
 
     # Meme exploit
+
     def sleepy_exploit(ctx):
         return ctx.author.id == 208026791749746690
 
@@ -169,7 +117,8 @@ class fun(commands.Cog):
     @commands.check(sleepy_exploit)
     async def exploit(self, ctx):
 
-        embed = discord.Embed(colour=0x95efcc, description="you fucking donkey, thx for the server cache key.")
+        embed = discord.Embed(
+            colour=0x95efcc, description="you fucking donkey, thx for the server cache key.")
         embed.set_author(name=">> sleepy.exe Exploit")
         embed.set_footer(text="birb.cc")
         embed.timestamp = datetime.datetime.utcnow()
@@ -179,7 +128,8 @@ class fun(commands.Cog):
     @commands.command()
     async def ishentaiwarecheatdone(self, ctx):
         embed = discord.Embed(colour=0x95efcc, description="no")
-        embed.set_author(name="is chet done men? is this forum + cheat or just chet men?")
+        embed.set_author(
+            name="is chet done men? is this forum + cheat or just chet men?")
         embed.set_footer(text="birb.cc")
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
