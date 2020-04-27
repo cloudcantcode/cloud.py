@@ -1,3 +1,12 @@
+# sleepy.exe AKA birb.cc discord bot.
+# Fully coded in python.
+# Using discord.py recode. (Google for documentation. Will add to the read me at some point.)
+# Not the most efficiant code ever, but it works.
+#
+# Coded by sleepy#7888
+
+
+
 import discord
 import random
 import os
