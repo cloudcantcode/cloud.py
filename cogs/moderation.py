@@ -26,7 +26,7 @@ class moderation(commands.Cog):
     @clear.error
     async def clear_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(colour=0x95efcc, description="Please specify an amount of messages to clear.")
+            embed = discord.Embed(colour=0x95efcc, description="Please specify an amount of messages to clear. \n\nUsage: [prefix]clear [number]")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
@@ -49,7 +49,7 @@ class moderation(commands.Cog):
     async def kick_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
 
-            embed = discord.Embed(colour=0x95efcc, description="Please specify who you want me to kick. \n\nUsage: ,kick @user [reason]")
+            embed = discord.Embed(colour=0x95efcc, description="Please specify who you want me to kick. \n\nUsage: [prefix]kick @user [reason]")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
@@ -71,7 +71,7 @@ class moderation(commands.Cog):
     @ban.error
     async def ban_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(colour=0x95efcc, description="Please specify who you want me to ban. \n\nUsage: ,ban @user [reason]")
+            embed = discord.Embed(colour=0x95efcc, description="Please specify who you want me to ban. \n\nUsage: [prefix]ban @user [reason]")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
@@ -102,7 +102,7 @@ class moderation(commands.Cog):
     @unban.error
     async def unban_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(colour=0x95efcc, description="Please specify who you want me to unban. \n\nUsage: ,unban @user [reason]")
+            embed = discord.Embed(colour=0x95efcc, description="Please specify who you want me to unban. \n\nUsage: [prefix]unban @user [reason]")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()

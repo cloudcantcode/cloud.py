@@ -31,7 +31,7 @@ class fun(commands.Cog):
     async def _8ball_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
             embed = discord.Embed(
-                colour=0x95efcc, description="Please ask a question. \n\nUsage: ,8ball [question]")
+                colour=0x95efcc, description=f"Please ask a question. \n\nUsage: [prefix]8ball [question]")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
@@ -55,7 +55,7 @@ class fun(commands.Cog):
         if isinstance(error, commands.MissingRequiredArgument):
 
             embed = discord.Embed(
-                colour=0x95efcc, description="Please specify a user to measure. \n\nUsage: ,peepeesize @user")
+                colour=0x95efcc, description="Please specify a user to measure. \n\nUsage: [prefix]peepeesize @user")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
@@ -77,7 +77,7 @@ class fun(commands.Cog):
     async def howgay_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
             embed = discord.Embed(
-                colour=0x95efcc, description="Please specify a user.\n\nUsage: ,howgay @user")
+                colour=0x95efcc, description="Please specify a user.\n\nUsage: [prefix]howgay @user")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
@@ -101,7 +101,7 @@ class fun(commands.Cog):
         if isinstance(error, commands.MissingRequiredArgument):
 
             embed = discord.Embed(
-                colour=0x95efcc, description="Please specify a user to measure their cringeness. \n\nUsage: ,howcringe @user")
+                colour=0x95efcc, description="Please specify a user to measure their cringeness. \n\nUsage: [prefix]howcringe @user")
             embed.set_author(name=">> Error")
             embed.set_footer(text="birb.cc")
             embed.timestamp = datetime.datetime.utcnow()
