@@ -127,7 +127,7 @@ class fun(commands.Cog):
     async def ishentaiwarecheatdone(self, ctx):
         embed = discord.Embed(colour=0x95efcc, description="no")
         embed.set_author(
-            name="is chet done men? is this forum + cheat or just chet men?")
+            name="is chet done men? is this forum + cheat or just chet men? where do download cheat?????")
         embed.set_footer(text="birb.cc")
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
