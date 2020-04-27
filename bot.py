@@ -11,6 +11,7 @@ import discord
 import random
 import os
 import datetime
+import requests
 from discord.ext import commands, tasks
 from itertools import cycle
 
@@ -337,4 +338,16 @@ async def ishentaiwarecheatdone(ctx):
     embed.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=embed)
 
-bot.run('put token here')
+@bot.command()
+async def iss(ctx):
+# This is the latitude and longitude of New York City.
+    parameters = {"lat": 40.71, "lon": -74}
+    response = requests.get("http://api.open-notify.org/iss-pass.json", params=parameters)
+
+    embed = discord.Embed(colour=0x95efcc, description=f"{response.content}")
+    embed.set_author(name="Where is the ISS?")
+    embed.set_footer(text="birb.cc")
+    embed.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=embed)
+
+bot.run('add token here')
