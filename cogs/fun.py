@@ -20,8 +20,7 @@ class fun(commands.Cog):
     async def _8ball(self, ctx, *, question):
         responses = self.data["8ball"]
 
-        embed = discord.Embed(
-            colour=0x95efcc, description=f"Question: {question} \n\nAnswer: {random.choice(responses)}")
+        embed = discord.Embed(colour=0x95efcc, description=f"Question: {question} \n\nAnswer: {random.choice(responses)}")
         embed.set_author(name="8Ball")
         embed.set_footer(text="birb.cc")
         embed.timestamp = datetime.datetime.utcnow()
