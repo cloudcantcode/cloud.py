@@ -3,3 +3,10 @@ python -m pip install --upgrade pip
 pip install discord.py
 pip install requests
 pip install ruamel.yaml
+
+# Make a file in the root dir called cfg.yaml and paste this in
+
+# Config file for private stuff like discord's token, api tokens etc...
+# This file wont be uploaded to github so you're safe my friend.
+Bot:
+  Token: token  # Change this for the token
