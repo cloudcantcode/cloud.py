@@ -11,12 +11,11 @@ import random
 import os
 import datetime
 import requests
+import json
+import sys
 from discord.ext import commands, tasks
 from itertools import cycle
-import sys
-
 from ruamel.yaml import YAML
-import json
 
 # Start up and prefix
 bot = commands.Bot(command_prefix=',')
@@ -57,8 +56,7 @@ async def change_status():
 # Checks latency
 @bot.command()
 async def ping(ctx):
-    embed = discord.Embed(
-        colour=0x95efcc, description=f"Pong! {round(bot.latency * 1000)}ms.")
+    embed = discord.Embed(colour=0x95efcc, description=f"Pong! {round(bot.latency * 1000)}ms.")
     embed.set_author(name="Latency")
     embed.set_footer(text="birb.cc")
     embed.timestamp = datetime.datetime.utcnow()

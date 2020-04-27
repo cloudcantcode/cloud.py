@@ -15,7 +15,7 @@ class fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # Array for 8ball
+    # *ball function
     @commands.command(aliases=['8ball'])
     async def _8ball(self, ctx, *, question):
         responses = self.data["8ball"]
@@ -38,7 +38,7 @@ class fun(commands.Cog):
             embed.timestamp = datetime.datetime.utcnow()
             await ctx.send(embed=embed)
 
-    # Array for dick sizes
+    # Dicksizes function
     @commands.command()
     async def peepeesize(self, ctx, member: discord.Member):
         dickSizes = self.data["dickSizes"]
@@ -62,7 +62,7 @@ class fun(commands.Cog):
             embed.timestamp = datetime.datetime.utcnow()
             await ctx.send(embed=embed)
 
-    # Array for gay measure
+    # Gay measure function
     @commands.command()
     async def howgay(self, ctx, member: discord.Member):
         gayness = self.data["gayness"]
@@ -84,7 +84,7 @@ class fun(commands.Cog):
             embed.timestamp = datetime.datetime.utcnow()
             await ctx.send(embed=embed)
 
-    # Array for cringe measure
+    # cringe measure function
     @commands.command()
     async def howcringe(self, ctx, member: discord.Member):
         cringeness = self.data["cringeness"]
@@ -109,7 +109,6 @@ class fun(commands.Cog):
             await ctx.send(embed=embed)
 
     # Meme exploit
-
     def sleepy_exploit(ctx):
         return ctx.author.id == 208026791749746690
 
