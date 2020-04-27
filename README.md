@@ -27,6 +27,9 @@ Coded by sleepy#7888 & Zankuro#9999
 
 ## [CHANGELOG]
 
+27/04/20 @ 9:06 PM: Updated usage commands.
+
+
 27/04/20 @ 7:06 PM: Made it so you need admin to use the "setprefix" command.
 
 
