@@ -328,4 +328,4 @@ async def ishentaiwarecheatdone(ctx):
     embed.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=embed)
 
-bot.run('NzAzMjY1NzIxOTA3Njc1MjI3.XqMFUw.Ex2bAR0lbI5SHv1U_1y-z0tZiVk')
+bot.run('put token here')
