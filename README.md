@@ -17,11 +17,11 @@ This file will contain all your personal information and it won't be uploaded to
 
 ## Additional
 
-information Updated frequently.
+Information Updated frequently.
 
 Utilizes cogs for more efficiency.
 It comes pre-made with moderation commands, some fun commands, and some utility commands.
-Coded by sleepy#7888
+Coded by sleepy#7888 & Zankuro#9999
 
 ## [CHANGELOG]
 
