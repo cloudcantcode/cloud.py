@@ -28,7 +28,15 @@ Coded by sleepy#7888 & Zankuro#9999
 ## [CHANGELOG]
 
 27/04/20 @ 7:06 PM: Made it so you need admin to use the "setprefix" command.
+
+
 27/04/20 @ 6:42 PM: Fixed the issue with the bot not setting the default prefix. Read Usage for how to do the first setup properly.
+
+
 27/04/20 @ 6:32 PM: Added .json files for setting custom prefixes. Doesn't work properly at the moment. Zankuro pls fix.
+
+
 27/04/20 @ 5:19 PM: Added configuration files.  
+
+
 27/04/20 @ 4:15 AM: Made scanning for files ending in .py more efficient, meaning cogs can be loaded faster.
