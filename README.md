@@ -15,7 +15,9 @@ Bot:
 
 This file will contain all your personal information and it won't be uploaded to GitHub.
 
-## Additional information Updated frequently.
+## Additional
+
+information Updated frequently.
 
 Utilizes cogs for more efficiency.
 It comes pre-made with moderation commands, some fun commands, and some utility commands.
