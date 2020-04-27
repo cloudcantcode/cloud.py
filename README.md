@@ -1,4 +1,4 @@
-# sleepy.exe [Scroll down for changelog!]
+# sleepy.py [Scroll down for changelog!]
 Fully open source discord bot coded in python using discord.py recode.
 
 Updated frequently.
