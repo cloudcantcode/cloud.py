@@ -78,7 +78,7 @@ async def _8ball(ctx, *, question):
                 'Uh oh, retard alert.',
                 'Config issue. All I see is an amazing cheat - Aimware user 2019',
                 'Shut up 3rd world nigger - Arpac',
-                "Bro I stopped snorting coke from your moms pussy 6 months later I did it again :pensive: - Arpac"]
+                "Bro I stopped snorting coke from your moms pussy 6 months later I did it again :pensive: - Arpac"] # Don't mind these lmao
 
     embed = discord.Embed(colour=0x95efcc, description=f"Question: {question} \n\nAnswer: {random.choice(responses)}")
     embed.set_author(name="8Ball")
