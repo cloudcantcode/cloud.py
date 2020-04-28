@@ -21,6 +21,14 @@ class utility(commands.Cog):
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def echo(self, ctx, *, content:str):
+        embed = discord.Embed(colour=0x95efcc, description=f"{content}")
+        embed.set_author(name="Echo")
+        embed.set_footer(text="birb.cc")
+        embed.timestamp = datetime.datetime.utcnow()
+        await ctx.send(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(utility(bot))
