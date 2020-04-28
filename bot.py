@@ -99,7 +99,7 @@ async def setprefix(ctx, prefix):
 @setprefix.error
 async def setprefixerror(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        embed = discord.Embed(colour=0x95efcc, description="Please specify a prefix. \n\nUsage: ,setprefix [prefix]")
+        embed = discord.Embed(colour=0x95efcc, description="Please specify a prefix. \n\nUsage: [prefix]setprefix [prefix]")
         embed.set_author(name=">> Error")
         embed.set_footer(text="birb.cc")
         embed.timestamp = datetime.datetime.utcnow()
