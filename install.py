@@ -1,4 +1,5 @@
 import os
+import json
 
 # simple list, Add here all the modules.
 os.system("python -m pip install --upgrade pip")
@@ -17,4 +18,8 @@ Bot:
 
 with open("cfg.yaml", "w") as f:
     f.write(file)
+    pass
 
+with open("prefixes.json", "w") as f:
+    json.dump("{}", f, indent=4)
+    pass
