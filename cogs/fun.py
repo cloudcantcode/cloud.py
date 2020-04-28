@@ -7,11 +7,12 @@ from discord.ext import commands, tasks
 from itertools import cycle
 import json
 
+from .utility import utility
+
+Utility = utility()
 
 class fun(commands.Cog):
-    with open('c_cfg.json') as f:
-        data = json.load(f)
-
+    data = Utility.file("c_cfg.json")
     def __init__(self, bot):
         self.bot = bot
 
@@ -19,23 +20,14 @@ class fun(commands.Cog):
     @commands.command(aliases=['8ball'])
     async def _8ball(self, ctx, *, question):
         responses = self.data["8ball"]
-
-        embed = discord.Embed(colour=0x95efcc, description=f"Question: {question} \n\nAnswer: {random.choice(responses)}")
-        embed.set_author(name="8Ball")
-        embed.set_footer(text="birb.cc")
-        embed.timestamp = datetime.datetime.utcnow()
-        await ctx.send(embed=embed)
+        await ctx.send(embed=Utility.embed_(f"Question: {question} \n\nAnswer: {random.choice(responses)}", "8Ball"))
 
     # Shows an error when not filling the question argument
     @_8ball.error
     async def _8ball_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(
-                colour=0x95efcc, description=f"Please ask a question. \n\nUsage: [prefix]8ball [question]")
-            embed.set_author(name=">> Error")
-            embed.set_footer(text="birb.cc")
-            embed.timestamp = datetime.datetime.utcnow()
-            await ctx.send(embed=embed)
+            await ctx.send(embed=Utility.embed_(f"Please ask a question. \n\nUsage: [prefix]8ball [question]", "8Ball"))
+
 
     # Dicksizes function
     @commands.command()

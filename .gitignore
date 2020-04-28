@@ -1,5 +1,6 @@
 cfg.yaml
 venv/
 cogs/__pycache__/*
+cogs\__pycache__\*.pyc
 .idea/
 prefixes.json

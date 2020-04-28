@@ -17,20 +17,16 @@ from discord.ext import commands, tasks
 from itertools import cycle
 from ruamel.yaml import YAML
 
+from cogs.utility import utility
 
-def file(file, write=False, data=None):
-    if not write:
-        with open(file, 'r') as f:
-            return json.load(f)
-    else:
-        with open(file, 'w') as f:
-            json.dump(data, f, indent=4)
+
+Utility = utility()
+yaml = YAML()
 
 
 def get_prefix(bot, message):
-    prefixes = file("prefixes.json")
+    prefixes = Utility.file("prefixes.json")
     return prefixes[str(message.guild.id)]
-
 
 # Start up and prefix
 bot = commands.Bot(command_prefix=get_prefix)
@@ -48,7 +44,7 @@ async def unload(ctx, extension):
     bot.unload_extension(f'cogs.{extension}')
 
 
-_status = file("c_cfg.json")
+_status = Utility.file("c_cfg.json")
 status = _status["status"]
 
 
@@ -69,51 +65,39 @@ async def change_status():
 
 @bot.event
 async def on_guild_join(guild):
-    prefixes = file("prefixes.json")
+    prefixes = Utility.file("prefixes.json")
     prefixes[str(guild.id)] = '>'
-    file("prefixes.json", True, prefixes)
+    Utility.file("prefixes.json", True, prefixes)
 
 
 @bot.event
 async def on_guild_remove(guild):
-    prefixes = file("prefixes.json")
+    prefixes = Utility.file("prefixes.json")
     prefixes.pop(str(guild.id))
-    file("prefixes.json", True, prefixes)
+    Utility.file("prefixes.json", True, prefixes)
 
 
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def setprefix(ctx, prefix):
-    prefixes = file("prefixes.json")
+    prefixes = Utility.file("prefixes.json")
     prefixes[str(ctx.guild.id)] = prefix
+    Utility.file("prefixes.json", True, prefixes)
 
-    file("prefixes.json", True, prefixes)
-
-    embed = discord.Embed(colour=0x95efcc, description=f"Prefix set to {prefix}")
-    embed.set_author(name="Set Prefix")
-    embed.set_footer(text="birb.cc")
-    embed.timestamp = datetime.datetime.utcnow()
-    await ctx.send(embed=embed)
-
+    await ctx.send(embed=Utility.embed_(f"Prefix set to {prefix}","Set Prefix"))
 
 @setprefix.error
 async def setprefixerror(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        embed = discord.Embed(colour=0x95efcc, description="Please specify a prefix. \n\nUsage: ,setprefix [prefix]")
-        embed.set_author(name=">> Error")
-        embed.set_footer(text="birb.cc")
-        embed.timestamp = datetime.datetime.utcnow()
-        await ctx.send(embed=embed)
+        await ctx.send(embed=Utility.embed_(f"Please specify a prefix. \n\nUsage: {get_prefix()}setprefix `prefix`", ">> Error", 0x95efcc, 0xff0000))
 
 
 # Checks latency
 @bot.command()
 async def ping(ctx):
-    embed = discord.Embed(colour=0x95efcc, description=f"Pong! {round(bot.latency * 1000)}ms.")
-    embed.set_author(name="Latency")
-    embed.set_footer(text="birb.cc")
-    embed.timestamp = datetime.datetime.utcnow()
-    await ctx.send(embed=embed)
+    print()
+    await ctx.send(embed=Utility.embed_(f"Pong! {round(bot.latency * 1000)}","Latency"))
+
 
 
 # Scans for members joining the server
@@ -130,7 +114,7 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
 
-yaml = YAML()
+
 cfg = yaml.load(open("cfg.yaml", "r"))
 token = cfg["Bot"]["Token"]
 

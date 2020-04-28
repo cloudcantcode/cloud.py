@@ -5,21 +5,35 @@ import datetime
 import requests
 from discord.ext import commands, tasks
 from itertools import cycle
+import json
+
+"""
+This file will contain all functions related to utilities.
+"""
+
 
 class utility(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
 
-    @commands.command()
-    async def iss(self, ctx):
-    # This is the latitude and longitude of New York City.
-        parameters = {"lat": 40.71, "lon": -74}
-        response = requests.get("http://api.open-notify.org/iss-pass.json", params=parameters)
-        embed = discord.Embed(colour=0x95efcc, description=f"{response.content}")
-        embed.set_author(name="Scuffed ISS Locator")
-        embed.set_footer(text="birb.cc")
-        embed.timestamp = datetime.datetime.utcnow()
-        await ctx.send(embed=embed)
+    def file(self, file, write=False, data=None):
+        if not write:
+            with open(file, 'r') as f:
+                return json.load(f)
+        else:
+            with open(file, 'w') as f:
+                json.dump(data, f, indent=4)
+
+    def embed_(self, description, author, footer="birb.cc", color=0x95efcc, Timestamp = True):
+        if Timestamp:
+            _embed = discord.Embed(colour=color, description=description)
+            _embed.set_author(name=author)
+            _embed.set_footer(text=footer)
+            _embed.timestamp = datetime.datetime.utcnow()
+            return _embed
+        else:
+            _embed = discord.Embed(colour=color, description=description)
+            _embed.set_author(name=author)
+            _embed.set_footer(text=footer)
+            return _embed
 
 
 def setup(bot):

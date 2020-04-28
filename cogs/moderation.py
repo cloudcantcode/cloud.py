@@ -6,6 +6,10 @@ import requests
 from discord.ext import commands, tasks
 from itertools import cycle
 
+from .utility import utility
+
+Utility = utility()
+
 class moderation(commands.Cog):
     def __init__(self, bot):
         self.bot = bot

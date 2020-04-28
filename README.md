@@ -16,9 +16,14 @@ Coded by sleepy#7888 & Zankuro#9999
 
 ## [CHANGELOG]
 
+28/04/20 @ 8:53 PM: Added utility functions 
+
+
 28/04/20 @ 10:37 AM: Uploaded install and updated readme.md.
 
+
 28/04/20 @ 10:30 AM: Better system to open the configuration files.
+
 
 27/04/20 @ 9:06 PM: Updated usage commands.
 
