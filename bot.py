@@ -91,8 +91,8 @@ async def setprefixerror(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send(embed=Utility.embed_(f"Please specify a prefix. \n\nUsage: {get_prefix()}setprefix `prefix`", ">> Error", 0x95efcc, 0xff0000))
 
-
 # Checks latency
+
 @bot.command()
 async def ping(ctx):
     print()

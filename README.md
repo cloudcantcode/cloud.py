@@ -16,7 +16,11 @@ Coded by sleepy#7888 & Zankuro#9999
 
 ## [CHANGELOG]
 
+
 28/04/20 @ 8:53 PM: Added utility functions 
+
+
+28/04/20 @ 7:57 PM: Added echo command.
 
 
 28/04/20 @ 10:37 AM: Uploaded install and updated readme.md.
