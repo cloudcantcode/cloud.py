@@ -17,14 +17,24 @@ from discord.ext import commands, tasks
 from itertools import cycle
 from ruamel.yaml import YAML
 
-def get_prefix(bot, message):
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
 
+def file(file, write=False, data=None):
+    if not write:
+        with open(file, 'r') as f:
+            return json.load(f)
+    else:
+        with open(file, 'w') as f:
+            json.dump(data, f, indent=4)
+
+
+def get_prefix(bot, message):
+    prefixes = file("prefixes.json")
     return prefixes[str(message.guild.id)]
 
+
 # Start up and prefix
-bot = commands.Bot(command_prefix = get_prefix)
+bot = commands.Bot(command_prefix=get_prefix)
+
 
 @bot.command()
 @commands.has_permissions(administrator=True)
@@ -37,14 +47,11 @@ async def load(ctx, extension):
 async def unload(ctx, extension):
     bot.unload_extension(f'cogs.{extension}')
 
-status = cycle(['with my balls',
-                "with sleepy's balls",  #
-                "with Jordan's balls",  # Nice gay trio...
-                "with Cadan's balls",   #
-                'with thigh.life',
-                'with birb.cc',
-                'with Hentaiware.moe',
-                'with Hentaihook'])
+
+_status = file("c_cfg.json")
+status = _status["status"]
+
+
 
 # Init
 @bot.event
@@ -53,47 +60,41 @@ async def on_ready():
     print('>> Bot is initalized')
     print('>> We have logged in as {0.user}'.format(bot))
 
+
 # Status Loop
 @tasks.loop(seconds=20)
 async def change_status():
     await bot.change_presence(activity=discord.Game(next(status)))
 
+
 @bot.event
 async def on_guild_join(guild):
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
-
+    prefixes = file("prefixes.json")
     prefixes[str(guild.id)] = '>'
+    file("prefixes.json", True, prefixes)
 
-    with open('prefixes.json', 'w') as f:
-        json.dump(prefixes, f, indent=4)
 
 @bot.event
 async def on_guild_remove(guild):
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
-
+    prefixes = file("prefixes.json")
     prefixes.pop(str(guild.id))
+    file("prefixes.json", True, prefixes)
 
-    with open('prefixes.json', 'w') as f:
-        json.dump(prefixes, f, indent=4)
 
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def setprefix(ctx, prefix):
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
-
+    prefixes = file("prefixes.json")
     prefixes[str(ctx.guild.id)] = prefix
 
-    with open('prefixes.json', 'w') as f:
-        json.dump(prefixes, f, indent=4)
+    file("prefixes.json", True, prefixes)
 
     embed = discord.Embed(colour=0x95efcc, description=f"Prefix set to {prefix}")
     embed.set_author(name="Set Prefix")
     embed.set_footer(text="birb.cc")
     embed.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=embed)
+
 
 @setprefix.error
 async def setprefixerror(ctx, error):
@@ -114,6 +115,7 @@ async def ping(ctx):
     embed.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=embed)
 
+
 # Scans for members joining the server
 # @bot.event
 # async def on_member_join(member):
@@ -127,7 +129,6 @@ async def ping(ctx):
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
-
 
 yaml = YAML()
 cfg = yaml.load(open("cfg.yaml", "r"))

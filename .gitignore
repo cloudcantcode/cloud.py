@@ -1,2 +1,3 @@
 cfg.yaml
-./cogs/__pycache__/*
+./cogs/__pycache__/
+./venv
