@@ -4,19 +4,8 @@ Fully open-source discord bot coded in python using discord.py recode.
 
 ## Usage
 
-Make sure to install all the dependencies, they're in `install.txt`. Then make a file called `cfg.yaml`. and add this:
-
-```yaml
-# Config file for private stuff like discord's token, api tokens etc...
-# This file wont be uploaded to github so you're safe my friend.
-Bot:
-  Token: token # Change this for the token
-```
-
-This file will contain all your personal information and it won't be uploaded to GitHub.
-
-Before inviting the bot to your server, make sure the bot is running first. If you invite the bot to the server then run it, it wont be able to set it's default prefix. You only have to do this once unless you reset the ```prefixes.json``` file.
-
+run the file called `install.py` in the root directory. Remplace `token123` with your bot token in the `cfg.yaml` file.
+Then run the bot.py file with `python bot.py`.
 ## Additional
 
 Information Updated frequently.
@@ -27,7 +16,9 @@ Coded by sleepy#7888 & Zankuro#9999
 
 ## [CHANGELOG]
 
-28/04/20 @ 10:30 PM: Better system to open the configuration files.
+28/04/20 @ 10:37 AM: Uploaded install and updated readme.md.
+
+28/04/20 @ 10:30 AM: Better system to open the configuration files.
 
 27/04/20 @ 9:06 PM: Updated usage commands.
 
