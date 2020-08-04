@@ -14,6 +14,7 @@ Utilizes cogs for more efficiency.
 It comes pre-made with moderation commands, some fun commands, and some utility commands.
 Birb commands coming soon to a birb bot near you
 Coded by cloud#4707 & Zankuro#9999
+pog oh no
 
 ## [CHANGELOG]
 
