@@ -19,10 +19,11 @@ from itertools import cycle
 
 from dotenv import load_dotenv
 
-from cogs.utility import utility
+#from cogs.utility import utility
 
 
 if __name__ == "__main__":
+    print("Bot idk")
     # If you are doing your fork of this change this shit for something
     # better, I don't have the mental health to fix recode this shit
     # + there is a lot of shit what we don't need so idk
@@ -53,8 +54,8 @@ if __name__ == "__main__":
     @bot.command()
     async def ping(ctx):
         print()
-        await ctx.send(embed=Utility.embed_(f"Pong! {round(bot.latency * 1000)}", "Latency"))
-
+        # await ctx.send(embed=Utility.embed_(f"Pong! {round(bot.latency * 1000)}", "Latency"))
+        await ctx.send(f"Pong! {round(bot.latency * 1000)}")
     # honestly, I don't know who tf though it was a good idea add "cogs" shit on python
     for filename in os.listdir('./cogs'):
         if filename.endswith('.py'):

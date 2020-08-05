@@ -1,12 +1,13 @@
 """
 Main file of the project.
 """
-#import bot.bot
 from imger import Imager
 
 
 def main():
     print("coom")
+    # Plase do something better than this bullshit
+    exec(open("./src/bot/bot.py").read())
 
 
 if __name__ == "__main__":
