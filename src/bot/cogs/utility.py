@@ -8,7 +8,7 @@ from itertools import cycle
 import json
 
 """
-This file will contain all functions related to utilities.
+    2:22 AM - I don't know what I'm doing at this point...
 """
 
 
@@ -22,7 +22,7 @@ class utility(commands.Cog):
             with open(file, 'w') as f:
                 json.dump(data, f, indent=4)
 
-    def embed_(self, description, author, footer="birb.cc", color=0x95efcc, Timestamp = True):
+    def embed_(self, description, author, footer="birb.cc", color=0x95efcc, Timestamp=True):
         if Timestamp:
             _embed = discord.Embed(colour=color, description=description)
             _embed.set_author(name=author)
@@ -36,7 +36,7 @@ class utility(commands.Cog):
             return _embed
 
     @commands.command()
-    async def echo(self, ctx, *, content:str):
+    async def echo(self, ctx, *, content: str):
         embed = discord.Embed(colour=0x95efcc, description=f"{content}")
         embed.set_author(name="Echo")
         embed.set_footer(text="birb.cc")
